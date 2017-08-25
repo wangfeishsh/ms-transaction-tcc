@@ -23,7 +23,7 @@ public class AccountController {
     public Response<Participant> frozen(@RequestBody FrozenRequest request) {
         log.info("frozen start : {}", JSON.toJSONString(request));
 
-        //商品库存进行冻结，并对冻结的记录进行存库，记录此次事件Id
+        //账户金额进行冻结，并对冻结的记录进行存库，记录此次事件Id
         Participant participant = Participant.builder().serverName("ms-account").serverUri("/v1/" + UUID.randomUUID() + "/confirm").expireTime(LocalDate.now().plus(30L, ChronoUnit.MINUTES)).build();
 
         //注意，在此处将此事件抛给定时任务处理，30分钟后自动失效解冻
@@ -35,7 +35,7 @@ public class AccountController {
     @PutMapping("/v1/tcc/{tccId}")
     public Response confirm(@PathVariable("tccId") String tccId) {
         log.info("confirm start : {}", tccId);
-        //商品库存根据冻结状况进行扣减（不得超出规定时间）
+        //账户金额根据冻结状况进行扣减（不得超出规定时间）
         log.info("confirm end");
         return Response.success(null);
     }
@@ -43,7 +43,7 @@ public class AccountController {
     @DeleteMapping("/v1/tcc/{tccId}")
     public Response cancel(@PathVariable("tccId") String tccId) {
         log.info("cancel start : {}", tccId);
-        //商品库存根据冻结状况进行回溯
+        //账户金额根据冻结状况进行回溯
         log.info("cancel end");
         return Response.success(null);
     }
