@@ -6,7 +6,7 @@
 	<groupId>com.bao</groupId>
 	<artifactId>ms-transaction-tcc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
 
 	<name>ms-transaction-tcc</name>
 	<description>Demo project for Spring Boot</description>
@@ -30,8 +30,16 @@
 		<module>ms-order</module>
 		<module>ms-account</module>
 		<module>ms-product</module>
+		<module>ms-common</module>
 	</modules>
 
-
+	<dependencies>
+		<!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.32</version>
+		</dependency>
+	</dependencies>
 
 </project>
