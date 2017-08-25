@@ -69,7 +69,6 @@ public class CoordinatorService {
     //确认资源
     public void tccCancel(@RequestBody ParticipantRequest request) {
         List<Participant> list = request.getParticipants();
-        List<Participant> success = request.getParticipants();
         if (!CollectionUtils.isEmpty(list)) {
             for (Participant node : list) {
                 InstanceInfo instanceInfo = eurekaClient.getNextServerFromEureka(node.getServerName(), Boolean.FALSE);
